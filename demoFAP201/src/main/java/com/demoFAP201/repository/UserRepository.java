@@ -6,7 +6,6 @@ package com.demoFAP201.repository;
 
 import com.demoFAP201.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
-    @Query("SELECT p FROM User p WHERE p.code = ?1")
-    User findByAccountName(String accountName);
+    
 
 }

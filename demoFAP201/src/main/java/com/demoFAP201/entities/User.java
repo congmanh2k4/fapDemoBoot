@@ -4,6 +4,8 @@
  */
 package com.demoFAP201.entities;
 
+import com.demoFAP201.json.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -20,14 +22,16 @@ import lombok.Data;
 public class User {
     @Id
     private String code;
-    
+
     private String password;
     
     @ManyToOne
     @JoinColumn(name = "role_id")
+
     private Role role;
     
     @OneToOne(mappedBy = "user")
+
     private Lecturer lecturer;
     
     @OneToOne(mappedBy = "user")

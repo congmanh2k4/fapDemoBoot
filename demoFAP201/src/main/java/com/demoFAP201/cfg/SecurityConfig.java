@@ -36,7 +36,7 @@ public class SecurityConfig {
     public AuthenticationProvider authProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(uds);
-        provider.setPasswordEncoder(new BCryptPasswordEncoder());
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(5));
         return provider;
     }
     
@@ -51,10 +51,11 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth->{
                     auth
+                            .requestMatchers(antMatcher("/login")).permitAll()
                             .requestMatchers(antMatcher("/profile")).authenticated()
-                            .requestMatchers(antMatcher("/admin/**")).hasAuthority("USER_ADMIN")
-                            .requestMatchers(antMatcher("/students/**")).hasAnyAuthority("USER_STUDENT", "USER_ADMIN")
-                            .requestMatchers(antMatcher("/lecturer/**")).hasAnyAuthority("USER_LECTURER","USER_ADMIN")
+                            .requestMatchers(antMatcher("/admin-home/**")).hasAuthority("ROLE_ADMIN")
+                            .requestMatchers(antMatcher("/student-home/**")).hasAnyAuthority("ROLE_STUDENT", "ROLE_ADMIN")
+                            .requestMatchers(antMatcher("/lecturer-home/**")).hasAnyAuthority("ROLE_LECTURER","ROLE_ADMIN")
                             .anyRequest().permitAll();
                 })
                 .formLogin(formLogin -> {

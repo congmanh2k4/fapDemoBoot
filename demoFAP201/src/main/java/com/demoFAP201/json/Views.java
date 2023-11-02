@@ -11,7 +11,7 @@ package com.demoFAP201.json;
 public class Views {
     public static class Public{}
     public static class InternalStudent extends Public{}
-    
+    public static class InternalUser extends Public{}
     
     
 }

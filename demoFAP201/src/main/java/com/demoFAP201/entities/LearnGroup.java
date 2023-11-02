@@ -5,6 +5,7 @@
 package com.demoFAP201.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -36,7 +37,7 @@ public class LearnGroup {
     @JoinColumn(name = "semester_id")
     private Semester  semester;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "Group_Student",
             joinColumns = @JoinColumn(name = "group_id"),

@@ -26,14 +26,14 @@ public class Grade {
     @Id
     private int course_id;
     @Id
-    private int grade_id;
+    private String grade_type;
     private float value;
 
-    public Grade(int student_id, int semester_id, int course_id, int grade_id, float value) {
+    public Grade(int student_id, int semester_id, int course_id, String grade_type, float value) {
         this.student_id = student_id;
         this.semester_id = semester_id;
         this.course_id = course_id;
-        this.grade_id = grade_id;
+        this.grade_type = grade_type;
         this.value = value;
     }
 

@@ -4,8 +4,6 @@
  */
 package com.demoFAP201.entities;
 
-import com.demoFAP201.json.Views;
-import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,19 +26,18 @@ import lombok.Data;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(Views.Public.class)
     private int id;
     
-    @JsonView(Views.InternalStudent.class)
+
     private String name;
     
-    @JsonView(Views.InternalStudent.class)
+ 
     private String mssv;
     
-    @JsonView(Views.Public.class)
+ 
     private LocalDate dob; // date of birth
     
-    @JsonView(Views.Public.class)
+ 
     private boolean gender;
     
     
